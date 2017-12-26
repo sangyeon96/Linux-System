@@ -31,6 +31,18 @@ ls -al /etc/skel/ (list all with long format - show permissions, skeleton direct
 
 ### 1.3 매뉴얼 커맨드 man
 
+**man **\(커맨드\) : 각 커맨드의 사용법, 동작을 사용자가 확인할 수 있는 매뉴얼 참조 커맨드
+
+![](/assets/man rm.png)
+
+NAME, SYNOPSIS, DESCRIPTION, OPTION 등을 볼 수 있다.
+
+**whatis** \(커맨드\) : 검색 문자열로 지정한 커맨드명과 매치되는 man 파일의 요약문을 표시
+
+**apropos** \(커맨드\) : 지정된 검색 문자열을 커맨드명과 요약문에서 검색하여 표시
+
+whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾는다고 할 수 있다. printf를 예로 들자면, whatis printf는 printf 관련 man 파일의 요약문을 표시한다면, apropos는 asprintf, dprintf, fprintf 등도 같이 찾는다.
+
 ### 1.4 사용자와 그룹
 
 ### 1.5 허가권과 소유권
