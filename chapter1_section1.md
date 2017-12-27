@@ -43,7 +43,15 @@ NAME, SYNOPSIS, DESCRIPTION, OPTION 등을 볼 수 있다.
 
 whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾는다고 할 수 있다. printf를 예로 들자면, whatis printf는 printf 관련 man 파일의 요약문을 표시한다면, apropos는 asprintf, dprintf, fprintf 등도 같이 찾는다.
 
+\(CENTOS 7에서는 mandb를 해도 printf\(1\)만 나온다..\)
+
 ### 1.4 사용자와 그룹
+
+리눅스는 여러 명의 사용자가 동시에 하나의 시스템을 이용할 수 있는 '멀티 사용자 시스템'이다.
+
+허가 혹은 제한을 실시하기 위하여 리눅스에서는 사용자와 그룹이라는 개념을 사용한다.
+
+사용자 계정\(user account\)은 한 사람에게 여러 개 부여할 수 있지만, 하나만 부여하는 것이 일반적이다. 사용자를 하나로 묶는 경우는 그룹을 설정하여 해당 그룹에만 시스템 리소스에 대한 접근을 허가하도록 설정할 수 있다.
 
 ### 1.5 허가권과 소유권
 
