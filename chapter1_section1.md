@@ -103,5 +103,5 @@ ASCII\(American Standard Code for Information Interchange\)의 문자 코드 중
 
 ### 1.7 디렉터리
 
-
+**디렉터리\(directory\)**는 여러 개의 파일이나 디렉터리를 하나로 묶어 넣어두는 곳. UNIX에서는 디렉터리와 파일로 **트리 구조\(Tree Structure\)**를 구성한다. 최상위 디렉터리를 '**/**\(root: 루트\)'라고 하며 이 아래에 다른 디렉터리와 파일들이 배치된다.![](/assets/Directory Expression.jpg)
 
