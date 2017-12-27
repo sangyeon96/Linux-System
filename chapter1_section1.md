@@ -87,7 +87,19 @@ ps x (show processes not attached to a terminal)
 보고 싶은 옵션에 따라 ps ax, ps aux 이렇게 묶어 쓰면 됨.
 ```
 
+![](/assets/ps au.png)
+
+**sticky bit**는 여러 명의 사용자가 디렉터리를 공유할 때 sgid와는 반대로, 파일을 만든 사용자만이 삭제할 수 있도록 하는 비트이다.
+
 ### 1.6 파일
+
+데이터의 최소 단위 **비트\(bit\)**, 8개의 비트를 하나로 묶은 것 **바이트\(byte\)**
+
+1byte는 2^8\(=256\)가지 조합이 가능하며 0~255를 표현할 수 있다.
+
+ASCII\(American Standard Code for Information Interchange\)의 문자 코드 중 일부를 표현할 수 있다. \(자세한 건 man ascii 참조\)
+
+8진수\(OCTal number\) 16진수\(HEXadecimal number\) 10진수\(DECimal number\)
 
 ### 1.7 디렉터리
 
