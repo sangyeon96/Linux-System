@@ -61,7 +61,7 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 
 읽기\(rEAD\), 쓰기\(wRITE\), 실행\(ExECUTE\)
 
-| 기호 | 의미 | 이진수 표현 | 정수 표현r |
+| 기호 | 의미 | 이진수 표현 | 정수 표현 |
 | :--- | :--- | :--- | :--- |
 | r-- | 읽기 가능 | 100 | 4 |
 | -w- | 쓰기 가능 | 010 | 2 |
@@ -69,6 +69,23 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 | rw- | 읽기, 쓰기 가능 | 110 | 6 |
 | r-x | 읽기, 실행 가능 | 101 | 5 |
 | rwx | 읽기, 쓰기, 실행 가능 | 111 | 7 |
+
+**chmod** 커맨드로 파일의 허가권을 변경할 수 있다. ex\) chmod -x 디렉토리이름 : 해당 디렉토리의 실행 권한을 없앰
+
+여기서 rwx앞에 d는 파일 타입이 directory라는 걸, -는 일반 파일이라는걸 나타낸다.\(나머지 타입은 p.32 참조\)
+
+**suid** \(set _user_ id\) : 파일의 소유자 권한으로 커맨드를 실행 할 수 있다
+
+**sgid** \(set _group_ id\) : 파일은 소유자 권한, 디렉터리인 경우에 그 상위 디렉터리\(부모 디렉터리\)와 동일한 권한으로 실행할 수 있다.
+
+**ps** \(process status\) : 터미널에서 실행되고 있는 프로세스 상태 표시
+
+```
+ps a (show processes for all users)
+ps u (display the process's user/owner)
+ps x (show processes not attached to a terminal)
+보고 싶은 옵션에 따라 ps ax, ps aux 이렇게 묶어 쓰면 됨.
+```
 
 ### 1.6 파일
 
