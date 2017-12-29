@@ -4,7 +4,7 @@
 
 Section 1. UNIX의 기초
 
-Section 2. 리눅스의 디렉터리 구성
+Section 2. 리눅스의 디렉터리 구성ㅇㅇㅇ
 
 ## Chapter 2. 셸
 
