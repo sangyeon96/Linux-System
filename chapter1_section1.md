@@ -72,6 +72,8 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 
 **chmod** 커맨드로 파일의 허가권을 변경할 수 있다. ex\) chmod -x 디렉토리이름 : 해당 디렉토리의 실행 권한을 없앰
 
+chmod 쓰는 예시는 여기서 확인하기 : [http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html](http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html)
+
 여기서 rwx앞에 d는 파일 타입이 directory라는 걸, -는 일반 파일이라는걸 나타낸다.\(나머지 타입은 p.32 참조\)
 
 **suid** \(set _user_ id\) : 파일의 소유자 권한으로 커맨드를 실행 할 수 있다
