@@ -59,6 +59,8 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 
 ![](/assets/permission.png)
 
+![](/assets/How to see ls -l.png)
+
 여기서 rwx앞에 d는 파일 타입이 directory라는 걸, -는 일반 파일이라는걸 나타낸다.\(나머지 타입은 p.32 참조\)
 
 읽기\(rEAD\), 쓰기\(wRITE\), 실행\(ExECUTE\)
