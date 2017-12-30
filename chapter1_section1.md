@@ -27,21 +27,21 @@ ls -l (list with long format - show permissions)
 ls -al /etc/skel/ (list all with long format - show permissions, skeleton directory)
 ```
 
-여기서 ls의 다양한 커맨드 옵션들을 볼 수 있다.\([https://www.rapidtables.com/code/linux/ls.html](https://www.rapidtables.com/code/linux/ls.html)\)
+여기서 `ls`의 다양한 커맨드 옵션들을 볼 수 있다.\([https://www.rapidtables.com/code/linux/ls.html](https://www.rapidtables.com/code/linux/ls.html)\)
 
 ### 1.3 매뉴얼 커맨드 man
 
-**man **\(커맨드\) : 각 커맨드의 사용법, 동작을 사용자가 확인할 수 있는 매뉴얼 참조 커맨드
+`man (커맨드)` : 각 커맨드의 사용법, 동작을 사용자가 확인할 수 있는 매뉴얼 참조 커맨드
 
 ![](/assets/man rm.png)
 
 NAME, SYNOPSIS, DESCRIPTION, OPTION 등을 볼 수 있다.
 
-**whatis** \(커맨드\) : 검색 문자열로 지정한 커맨드명과 매치되는 man 파일의 요약문을 표시
+`whatis (커맨드)` : 검색 문자열로 지정한 커맨드명과 매치되는 man 파일의 요약문을 표시
 
-**apropos** \(커맨드\) : 지정된 검색 문자열을 커맨드명과 요약문에서 검색하여 표시
+`apropos (커맨드)` : 지정된 검색 문자열을 커맨드명과 요약문에서 검색하여 표시
 
-whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾는다고 할 수 있다. printf를 예로 들자면, whatis printf는 printf 관련 man 파일의 요약문을 표시한다면, apropos는 asprintf, dprintf, fprintf 등도 같이 찾는다.
+whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾는다고 할 수 있다. printf를 예로 들자면, `whatis printf`는 printf 관련 man 파일의 요약문을 표시한다면, apropos는 asprintf, dprintf, fprintf 등도 같이 찾는다.
 
 \(CENTOS 7에서는 mandb를 해도 printf\(1\)만 나온다..\)
 
@@ -70,9 +70,9 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 | r-x | 읽기, 실행 가능 | 101 | 5 |
 | rwx | 읽기, 쓰기, 실행 가능 | 111 | 7 |
 
-**chmod** 커맨드로 파일의 허가권을 변경할 수 있다. ex\) chmod -x 디렉토리이름 : 해당 디렉토리의 실행 권한을 없앰
+`chmod` 커맨드로 파일의 허가권을 변경할 수 있다. ex\) `chmod -x 디렉토리이름` : 해당 디렉토리의 실행 권한을 없앰
 
-chmod 쓰는 예시는 여기서 확인하기 : [http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html](http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html)
+`chmod` 쓰는 예시는 여기서 확인하기 : [http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html](http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html)
 
 ![](/assets/chmod.png)
 
@@ -82,7 +82,7 @@ chmod 쓰는 예시는 여기서 확인하기 : [http://rcsg-gsir.imsb-dsgi.nrc-
 
 **sgid** \(set _group_ id\) : 파일은 소유자 권한, 디렉터리인 경우에 그 상위 디렉터리\(부모 디렉터리\)와 동일한 권한으로 실행할 수 있다.
 
-**ps** \(process status\) : 터미널에서 실행되고 있는 프로세스 상태 표시
+`ps` \(process status\) : 터미널에서 실행되고 있는 프로세스 상태 표시
 
 ```
 ps a (show processes for all users)
