@@ -59,6 +59,8 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 
 ![](/assets/permission.png)
 
+여기서 rwx앞에 d는 파일 타입이 directory라는 걸, -는 일반 파일이라는걸 나타낸다.\(나머지 타입은 p.32 참조\)
+
 읽기\(rEAD\), 쓰기\(wRITE\), 실행\(ExECUTE\)
 
 | 기호 | 의미 | 이진수 표현 | 정수 표현 |
@@ -70,17 +72,25 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 | r-x | 읽기, 실행 가능 | 101 | 5 |
 | rwx | 읽기, 쓰기, 실행 가능 | 111 | 7 |
 
-`chmod` 커맨드로 파일의 허가권을 변경할 수 있다. ex\) `chmod -x 디렉토리이름` : 해당 디렉토리의 실행 권한을 없앰
+`chmod` 커맨드로 파일의 허가권을 변경할 수 있다. 변경하는 방법은 두 가지가 있다.
 
-`chmod` 쓰는 예시는 여기서 확인하기 : [http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html](http://rcsg-gsir.imsb-dsgi.nrc-cnrc.gc.ca/documents/basic/node28.html)
+![](/assets/Changing File Access Privileges.png)
 
-![](/assets/chmod.png)
-
-여기서 rwx앞에 d는 파일 타입이 directory라는 걸, -는 일반 파일이라는걸 나타낸다.\(나머지 타입은 p.32 참조\)
+첫 번째 방법. **chmod  \[options\]  octal-mode  file-list**![](/assets/chmod octal-mode.png)
 
 **suid** \(set _user_ id\) : 파일의 소유자 권한으로 커맨드를 실행 할 수 있다
 
 **sgid** \(set _group_ id\) : 파일은 소유자 권한, 디렉터리인 경우에 그 상위 디렉터리\(부모 디렉터리\)와 동일한 권한으로 실행할 수 있다.
+
+**sticky bit**는 여러 명의 사용자가 디렉터리를 공유할 때 sgid와는 반대로, 파일을 만든 사용자만이 삭제할 수 있도록 하는 비트이다.
+
+두 번째 방법. **chmod  \[options\]  symbolic-mode  file-list **\(symbolic-mode : _&lt;who&gt; &lt;operator&gt; &lt;privilege&gt;_\)![](/assets/chmod symbolic-mode.png)
+
+책에 나온 예시인 `chmod -x 디렉토리이름` : 해당 디렉토리의 실행 권한을 없앰 은 두 번째 방법에 속한다.
+
+![](/assets/chmod example.png)
+
+출처 : [http://eunguru.tistory.com/115](http://eunguru.tistory.com/115), [http://slideplayer.com/slide/6917329/](http://slideplayer.com/slide/6917329/)
 
 `ps` \(process status\) : 터미널에서 실행되고 있는 프로세스 상태 표시
 
@@ -92,8 +102,6 @@ ps x (show processes not attached to a terminal)
 ```
 
 ![](/assets/ps au.png)
-
-**sticky bit**는 여러 명의 사용자가 디렉터리를 공유할 때 sgid와는 반대로, 파일을 만든 사용자만이 삭제할 수 있도록 하는 비트이다.
 
 ### 1.6 파일
 
