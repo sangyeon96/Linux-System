@@ -143,6 +143,24 @@ File Descriptor\(파일 디스크립터\)
 
 `&`을 붙여 출력과 에러 출력을 하나로 묶을 수도 있다. ex\) `2>&1`
 
+처음에는 에러 출력은 실습을 어떻게 해봐야하나 했는데 좋은 예제를 찾았다.
+
+nop.txt라는 파일이 없는 상태에서 다음과 같이 입력하면
+
+```
+cat nop.txt > test.txt
+```
+
+터미널에 cat: nop.txt: No such file or directory와 함께 test.txt에는 아무런 내용이 없게된다.
+
+이제 다음과 같이 에러 출력\(2\)를 같이 입력하면
+
+```
+cat nop.txt 2> test.txt
+```
+
+test.txt에 cat: nop.txt: No such file or directory 가 출력된다.
+
 다음과 관련된 여러 예제는 [http://blog.gaerae.com/2014/10/linux-file-descriptor.html](http://blog.gaerae.com/2014/10/linux-file-descriptor.html) 에서 확인할 수 있다.
 
 * **파이프**
