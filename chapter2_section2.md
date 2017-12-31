@@ -6,7 +6,23 @@
 
 내장 커맨드는 type으로 확인할 수 있다. 또한, bash 메뉴얼\(man bash\)에서는 'SHELL BUILTIN COMMANDS'라는 항목에서 내장 커맨드를 확인할 수 있다.
 
+참고로 bash 메뉴얼은 매우 길기 때문에 .. /을 누른 후 shell builtin commands를 입력하면 해당 문자열이 포함된 부분을 찾을 수 있다.
 
+이전 문자열 찾기는 N, 다음 문자열 찾기는 n을 입력하면 된다. 찾아보면 많은 내장 커맨드들을 확인할 수 있다.
+
+![](/assets/type internal command%281%29.png)![](/assets/type internal command%282%29.png)
+
+추가적으로 궁금한 명령어 몇 개를 더 해보았다.
+
+![](/assets/type internal command%283%29.png)
+
+밑의 이미지에서는 Chapter 1 - Section 2에서 다룬 리눅스의 디렉터리 중 시스템 관리자와 사용자가 사용하는 커맨드가 배치되어 있는 /bin 디렉터리에 있는 커맨드들을 type 명령어로 확인할 수 있었다.
+
+![](/assets/type external command.png)
+
+ls와 grep의 경우 is aliased to ~가 무슨 뜻인지는 모르겠다만 type -a ls, type -a grep으로 입력하면 /bin 디렉터리에 있음을 확인할 수 있다.
+
+![](/assets/type -a.png)
 
 ### 2.2 주요 내장 커맨드
 
@@ -19,8 +35,8 @@ test.sh라는 파일을 만들어 예제 2-1을 실행해보았다.
     count=0
     while :
     do
-    	echo $count
-    	count=`expr $count + 1`
+        echo $count
+        count=`expr $count + 1`
     done
 
 첫번째 줄에서 주의해야 할 점은 변수를 대입할 때 공백이 없어야한다는 점이다. 대입 시 공백을 넣으면 공백을 데이터로 처리해 오류가 난다.
@@ -31,7 +47,7 @@ echo는 리눅스에서 출력을 하기 위해 사용하는 명령어이다. �
 
 expr는 연산자와 피연산자 사이에 공백을 주어야 제대로 계산된다. 공백을 주지 않으면 하나의 문자열로 인식한다. 그리고 수식을 묶어 준 것은 따옴표\('\)가 아니라 역따옴표\(\`\)다..그것도 모르고 실행했다가 expr $count + 1만 무한으로 출력되었다..count 변수에 문자열로 들어갔나보다..
 
-여기서 살짝 의문인 점은 C언어에서 보면 while\(1\)에서 1이 true를 반환하여 무한반복하는데, 여기서는 0이 true를 반환하여 무한 루프를 돈다는 것이다. 이건 차차 알아가기로 하고.. 
+여기서 살짝 의문인 점은 C언어에서 보면 while\(1\)에서 1이 true를 반환하여 무한반복하는데, 여기서는 0이 true를 반환하여 무한 루프를 돈다는 것이다. 이건 차차 알아가기로 하고..
 
 ##### source 또는 온점\(.\)
 
