@@ -84,7 +84,7 @@ evaluation. 파라미터를 간접 참조한다.
 
 ![](/assets/eval echo.png)![](/assets/echo eval.png)
 
-\$$human 또는 ${!human} 또는 \${$human}이 가능하다.
+$$human 또는 ${!human} 또는 ${$human}이 가능하다.
 
 참고 URL : [https://wiki.kldp.org/HOWTO/html/Adv-Bash-Scr-HOWTO/ivr.htm](https://wiki.kldp.org/HOWTO/html/Adv-Bash-Scr-HOWTO/ivr.html)
 
@@ -96,11 +96,13 @@ fork 시스템 콜을 사용하지 않고 지정된 커맨드를 스스로 실�
 
 셸에서 exec ls를 실행하면, ls 명령어를 실행한 후 로그아웃된다.\(그 속도가 굉장히 빨라서 ls 명령어의 출력 결과를 보기 힘들다\)
 
+![](/assets/exec ls.png)
+
 다음은 exec ls 실행 후 종료되는 이유를 설명한 글이다.
 
-If you run !!!ls, your shell process will start up _another _process to run the  !!!ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.
+If you run !!!ls, your shell process will start up \_another \_process to run the  !!!ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.
 
-With !!!exec ls, you actually _replace _your shell program in the _current _process with the !!!ls program so that, when it finishes, **there's no shell waiting for it**.
+With !!!exec ls, you actually \_replace \_your shell program in the \_current \_process with the !!!ls program so that, when it finishes, **there's no shell waiting for it**.
 
 Most likely, you will have either a terminal program or !!!init as the parent which is what will take over when your process exits. That's why your shell disappears, because you explicitly told it to.
 
