@@ -9,7 +9,7 @@
 echo "hello"
 ```
 
-첫번째 줄 '\#!/bin/sh'를 **샤방\(shebang\)**이라고 부른다. shebang의 어원은 _Sh_arp _Bang 혹은_ Ha_sh Bang_이다.
+첫번째 줄 '\#!/bin/sh'를 **샤방\(shebang\)**이라고 부른다. shebang의 어원은 **Sh**arp **Bang**_ 혹은_ Ha**sh Bang**이다.
 
 shebang에 관하여 자세한 내용은 다음 링크 참조 : [https://en.wikipedia.org/wiki/Shebang\_%28Unix%29\#Etymology\_and\_name\_history](https://en.wikipedia.org/wiki/Shebang_%28Unix%29#Etymology_and_name_history)
 
