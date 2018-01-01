@@ -90,6 +90,14 @@ execution. fork 시스템 콜을 사용하지 않고 지정된 커맨드를 스�
 
 표준 입력에서 1행 읽어들인다.
 
+![](/assets/read.png)
+
+다음은 키보드 입력이 아닌 텍스트 파일을 불러와서 read 명령어를 실행한 예제이다.
+
+![](/assets/read text.png)
+
+while read line은 그 자체로 많이 쓰이는 듯하다. 여기서 n은 0으로 초기화 되지도 않았는데 어떻게 1부터 시작하는지는 모르겠다0\_0
+
 ##### 그 외의 내장 커맨드
 
 `exit`, `export`, `return`, `unset`, `pwd`, `logout`, `kill`
