@@ -82,9 +82,27 @@ CENTOS 7에서는 dpkg directory가 존재하지 않아 ubuntu에서 실행해�
 
 evaluation. 파라미터를 간접 참조한다.
 
+![](/assets/eval echo.png)![](/assets/echo eval.png)
+
+\$$human 또는 ${!human} 또는 \${$human}이 가능하다.
+
+참고 URL : [https://wiki.kldp.org/HOWTO/html/Adv-Bash-Scr-HOWTO/ivr.htm](https://wiki.kldp.org/HOWTO/html/Adv-Bash-Scr-HOWTO/ivr.html)
+
 ##### exec
 
-execution. fork 시스템 콜을 사용하지 않고 지정된 커맨드를 스스로 실행한다.
+execution.
+
+fork 시스템 콜을 사용하지 않고 지정된 커맨드를 스스로 실행한다. fork 시스템 콜을 사용하지 않기 때문에 프로세스가 생성되지 않고 셸 자신이 지정된 커맨드로 치환되어 실행된다. exec를 사용하지 않는 경우 커맨드가 실행된 후에는 셸로 실행이 돌아가지만 exec를 사용하면 돌아가지 않는다.
+
+셸에서 exec ls를 실행하면, ls 명령어를 실행한 후 로그아웃된다.\(그 속도가 굉장히 빨라서 ls 명령어의 출력 결과를 보기 힘들다\)
+
+다음은 exec ls 실행 후 종료되는 이유를 설명한 글이다.
+
+If you run !!!ls, your shell process will start up _another _process to run the  !!!ls program, then it will wait for it to finish. When it finishes, control is returned to the shell.
+
+With !!!exec ls, you actually _replace _your shell program in the _current _process with the !!!ls program so that, when it finishes, **there's no shell waiting for it**.
+
+Most likely, you will have either a terminal program or !!!init as the parent which is what will take over when your process exits. That's why your shell disappears, because you explicitly told it to.
 
 ##### read
 
