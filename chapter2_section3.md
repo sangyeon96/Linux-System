@@ -143,9 +143,7 @@ count a b c d e f
 
 ![](/assets/positional parameters.png)
 
-`$@`와 `$*`이 실행 결과상 똑같아 보일 수 있는데, 둘의 차이는 모든 인수를 하나의 문자열로 보느냐\(`$*`\) 각각 개개인의 인수로 보느냐\(`$@`\)에 있다.
-
-그건 여길 참조하도록. [http://jybaek.tistory.com/477](http://jybaek.tistory.com/477)
+`$@`와 `$*`이 실행 결과상 똑같아 보일 수 있는데, 둘의 차이는 모든 인수를 하나의 문자열로 보느냐\(`$*`\) 각각 개개인의 인수로 보느냐\(`$@`\)에 있다. 그건 여길 참조하도록. [http://jybaek.tistory.com/477](http://jybaek.tistory.com/477)
 
 ### 3.3 if를 이용한 조건문
 
