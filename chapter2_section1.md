@@ -167,7 +167,7 @@ test.txt에 cat: nop.txt: No such file or directory 가 출력된다.
 
 파이프는 `|`를 이용해 프로그램의 출력을 다른 프로그램의 입력에 쓰도록 하는 것이다.
 
-자주 볼 수 있는 것은 `grep` 명령어를 이용한 예제이다.
+자주 볼 수 있는 것은 `grep` 명령어를 이용한 예제이다. \(gLOBAL rEGULAR eXPRESSION pRINT\)
 
 ```
 mount | grep '/dev'

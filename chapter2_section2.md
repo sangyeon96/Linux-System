@@ -6,7 +6,7 @@
 
 내장 커맨드는 `type`으로 확인할 수 있다. 또한, bash 메뉴얼 `man bash`에서는 'SHELL BUILTIN COMMANDS'라는 항목에서 내장 커맨드를 확인할 수 있다.
 
-참고로 bash 메뉴얼은 매우 길기 때문에 .. `/`을 누른 후 shell builtin commands를 입력하면 해당 문자열이 포함된 부분을 찾을 수 있다.
+참고로 bash 메뉴얼은 매우 길기 때문에.. `/`을 누른 후 shell builtin commands를 입력하면 해당 문자열이 포함된 부분을 찾을 수 있다.
 
 이전 문자열 찾기는 `N`, 다음 문자열 찾기는 `n`을 입력하면 된다. 찾아보면 많은 내장 커맨드들을 확인할 수 있다.
 
@@ -80,11 +80,11 @@ CENTOS 7에서는 dpkg directory가 존재하지 않아 ubuntu에서 실행해�
 
 ##### eval
 
-파라미터를 간접 참조한다.
+evaluation. 파라미터를 간접 참조한다.
 
 ##### exec
 
-fork 시스템 콜을 사용하지 않고 지정된 커맨드를 스스로 실행한다.
+execution. fork 시스템 콜을 사용하지 않고 지정된 커맨드를 스스로 실행한다.
 
 ##### read
 
