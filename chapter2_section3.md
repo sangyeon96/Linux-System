@@ -165,22 +165,22 @@ else
 fi
 ```
 
--f는 /etc/hostname 파일이 존재하면 참\(0\)을 반환한다. -z는 /etc/hostname의 크기가 0byte이면 참\(0\)을 반환한다.
+`-f`는 /etc/hostname 파일이 존재하면 참\(0\)을 반환한다. `-z`는 /etc/hostname의 크기가 0 byte이면 참\(0\)을 반환한다.
 
 ![](/assets/if.png)
 
-첫번째 조건의 실행문이 실행된 걸로 보아 /etc/hostname이 존재함을 알 수 있었다.\(실제로 /etc에서 ls \| grep 'hostname' 해보니 hostname이 있었다\)
+첫번째 조건의 실행문이 실행된 걸로 보아 /etc/hostname이 존재함을 알 수 있었다.\(실제로 /etc에서 `ls | grep 'hostname'` 해보니 hostname이 있었다\)
 
-여기서 조건식에 대해 더 자세히 알아보자면 조건식에는 셸 내부 커맨드 test나 \[ \]를 사용한다. 기술 방법은 다음과 같다.
+여기서 조건식에 대해 더 자세히 알아보자면 조건식에는 셸 내부 커맨드 `test`나 `[ ]`를 사용한다. 기술 방법은 다음과 같다.
 
 ```
 기술법(1) :test 조건식
 기술법(2) :[조건식]
 ```
 
-\[ \]는 test의 별명일 뿐 동작은 같다. 조건식은 파일이나 변수의 상태, 두 개의 변수 및 문자열의 비교 평가 결과가 참이면 '0', '거짓이면 '1'로 종료 상태를 반환한다.\(참이면 0, 거짓이면 1을 반환한다는게 그동안 배워왔던 거랑 반대다..이유는 [https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell ](https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell)참고\)
+`[ ]`는 test의 별명일 뿐 동작은 같다. 조건식은 파일이나 변수의 상태, 두 개의 변수 및 문자열의 비교 평가 결과가 참이면 '0', '거짓이면 '1'로 종료 상태를 반환한다.\(참이면 0, 거짓이면 1을 반환한다는게 그동안 배워왔던 거랑 반대다..이유는 [https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell ](https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell)참고\)
 
-test의 조건 연산자는 다음과 같다.
+`test`의 조건 연산자는 다음과 같다.
 
 ![](/assets/test command_file.jpg)
 
@@ -192,7 +192,7 @@ test의 조건 연산자는 다음과 같다.
 
 출처 : [http://slideplayer.com/slide/5291601/](http://slideplayer.com/slide/5291601/)
 
-산술연산에는 \(\( \)\)와 함께 +, -, &lt;, &gt;, &&, \|\| 등을, 논리연산에는 \[\[ \]\]와 함께 &&, \|\|, ==, !=을 연산자로 사용할 수 있지만, 이들은 bash용 표기이므로 이식성\(portability\)을 고려한다면 test와 \[ \]를 사용하는 것이 무난하다고 한다.
+산술연산에는 `(( ))`와 함께 `+`, `-`, `<`, `>`, `&&`, `||` 등을, 논리연산에는 `[[ ]]`와 함께 `&&`, `||`, `==`, `!=`을 연산자로 사용할 수 있지만, 이들은 bash용 표기이므로 이식성\(portability\)을 고려한다면 `test`와 `[ ]`를 사용하는 것이 무난하다고 한다.
 
 ### 3.4 while/for를 사용한 반복문\(루프\)
 
@@ -213,9 +213,9 @@ do
 done
 ```
 
-참고로 -lt는 less than이고 -le는 less than or equal to이므로 NUM이 10일 때에도 참\(0\)이 반환되어 "Num in 10"까지 출력된다.
+참고로 `-lt`는 less than이고 `-le`는 less than or equal to이므로 NUM이 10일 때에도 참\(0\)이 반환되어 "Num in 10"까지 출력된다.
 
-실행하는 각 커맨드의 행 끝에 쌍반점\(;\)을 붙이면 다음과 같은 방법으로 여러 개의 커맨드를 실행시킬 수 있다.
+실행하는 각 커맨드의 행 끝에 쌍반점`;`을 붙이면 다음과 같은 방법으로 여러 개의 커맨드를 실행시킬 수 있다.
 
 ```
 NUM=1; while test "$NUM" -le "10"; do echo "Num in $Num"; Num=$[Num+1]; done
