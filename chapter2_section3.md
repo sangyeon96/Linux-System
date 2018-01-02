@@ -143,9 +143,56 @@ count a b c d e f
 
 ![](/assets/positional parameters.png)
 
-`$@`와 `$*`이 실행 결과상 똑같아 보일 수 있는데, 둘의 차이는 모든 인수를 하나의 문자열로 보느냐\(`$*`\) 각각 개개인의 인수로 보느냐\(`$@`\)에 있다. 그건 여길 참조하도록. [http://jybaek.tistory.com/477](http://jybaek.tistory.com/477)
+`$*`와 `$@`이 실행 결과상 똑같아 보일 수 있는데, 둘의 차이는 모든 인수를 하나의 문자열로 보느냐\(`$*`\) 각각 개개인의 인수로 보느냐\(`$@`\)에 있다. 그건 여길 참조하도록. [http://jybaek.tistory.com/477](http://jybaek.tistory.com/477)
 
 ### 3.3 if를 이용한 조건문
+
+```
+if 리스트1; then 리스트2;
+elif 리스트3; then 리스트4;
+else 리스트5; fi
+```
+
+elif\(else if\), fi\(finish\)
+
+```
+if [-f /etc/hostname ]; then
+    cat /etc/hostname
+elif [-z /etc/hostname ]; then
+    echo "localhost.localdomain" > /etc/hostname
+else
+    echo "/etc/hostname not found"
+fi
+```
+
+-f는 /etc/hostname 파일이 존재하면 참\(0\)을 반환한다. -z는 /etc/hostname의 크기가 0byte이면 참\(0\)을 반환한다.
+
+![](/assets/if.png)
+
+첫번째 조건의 실행문이 실행된 걸로 보아 /etc/hostname이 존재함을 알 수 있었다.\(실제로 /etc에서 ls \| grep 'hostname' 해보니 hostname이 있었다\)
+
+여기서 조건식에 대해 더 자세히 알아보자면 조건식에는 셸 내부 커맨드 test나 \[ \]를 사용한다. 기술 방법은 다음과 같다.
+
+```
+기술법(1) :test 조건식
+기술법(2) :[조건식]
+```
+
+\[ \]는 test의 별명일 뿐 동작은 같다. 조건식은 파일이나 변수의 상태, 두 개의 변수 및 문자열의 비교 평가 결과가 참이면 '0', '거짓이면 '1'로 종료 상태를 반환한다.\(참이면 0, 거짓이면 1을 반환한다는게 그동안 배워왔던 거랑 반대다..이유는 [https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell ](https://stackoverflow.com/questions/2933843/why-0-is-true-but-false-is-1-in-the-shell)참고\)
+
+test의 조건 연산자는 다음과 같다.
+
+![](/assets/test command_file.jpg)
+
+![](/assets/test command_string.jpg)
+
+![](/assets/test command_relational.jpg)
+
+![](/assets/test command_boolean.jpg)
+
+출처 : [http://slideplayer.com/slide/5291601/](http://slideplayer.com/slide/5291601/)
+
+산술연산에는 \(\( \)\)와 함께 +, -, &lt;, &gt;, &&, \|\| 등을, 논리연산에는 \[\[ \]\]와 함께 &&, \|\|, ==, !=을 연산자로 사용할 수 있지만, 이들은 bash용 표기이므로 이식성\(portability\)을 고려한다면 test와 \[ \]르ㄹ 사용하는 것이 무난하다고 한다.
 
 ### 3.4 while/for를 사용한 반복문\(루프\)
 
