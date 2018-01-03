@@ -248,7 +248,21 @@ break는 for, while, select의 루프에서 빠져나올 때 쓰는 구문이다
 
 예제 2-9도..
 
-continue는 for, while, select에서 현재 루프를 건너뛰고 다음 지점부터 계속 루프를 돌리는 것이다. 비슷한 커맨드로는 return이나 exit이 있다. 다만, return은 셸 함수에서 빠져나오는 것이고, exit은 셸을 종료하는 것이다.\(비슷한가..\)
+continue는 for, while, select에서 현재 루프를 건너뛰고 다음 지점부터 계속 루프를 돌리는 것이다. 비슷한 커맨드로는 return이나 exit이 있다. 다만, return은 셸 함수에서 빠져나오는 것이고, exit은 셸을 종료하는 것이다.
+
+##### 와일드카드를 이용한 반복
+
+셸에서는 와일드카드 \*를 사용해 여러 개의 파일을 다룰 수 있다.
+
+```
+for i in *.txt; do
+    ls -lh $i
+done
+```
+
+현재 위치에 a.txt, b.txt, c.txt라는 파일이 있다고할 때, 실행결과는 다음과 같다.
+
+![](/assets/wild card *.png)
 
 ### 3.5 조건 분기
 
