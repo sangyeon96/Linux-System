@@ -20,7 +20,7 @@
 
 ![](/assets/type external command.png)
 
-`ls`와 `grep`의 경우 is aliased to ~가 무슨 뜻인지는 모르겠다만 `type -a ls`, `type -a grep`으로 입력하면 /bin 디렉터리에 있음을 확인할 수 있다.
+`ls`와 `grep`의 경우 is aliased to ~가 무슨 뜻인지는 모르겠다만 `type -a ls`, `type -a grep`으로 입력하면 /bin 디렉터리에 있음을 확인할 수 있다. 해당 Chapter의 Section 4에 의하면 alias는 셸 상의 별명을 뜻한다. ~/.bashrc 파일에 의해 ls라고 입력하면 ls --color=auto가, grep라고 입력하면 grep='grep --color=auto'가 실행되도록 설정되어 있다.
 
 ![](/assets/type -a.png)
 
