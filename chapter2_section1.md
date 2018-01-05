@@ -137,7 +137,7 @@ File Descriptor\(파일 디스크립터\)
 
 이를 이용해 표준 에러 출력\(2\)을 무시하고 표준 출력만을 화면에 표시하고 싶은 경우 다음과 같이 입력하면 된다.
 
-```
+```bash
 2> /dev/null
 ```
 
@@ -147,7 +147,7 @@ File Descriptor\(파일 디스크립터\)
 
 nop.txt라는 파일이 없는 상태에서 다음과 같이 입력하면
 
-```
+```bash
 cat nop.txt > test.txt
 ```
 
@@ -155,7 +155,7 @@ cat nop.txt > test.txt
 
 이제 다음과 같이 에러 출력\(2\)를 같이 입력하면
 
-```
+```bash
 cat nop.txt 2> test.txt
 ```
 
@@ -169,7 +169,7 @@ test.txt에 cat: nop.txt: No such file or directory 가 출력된다.
 
 자주 볼 수 있는 것은 `grep` 명령어를 이용한 예제이다. \(gLOBAL rEGULAR eXPRESSION pRINT\)
 
-```
+```bash
 mount | grep '/dev'
 ```
 

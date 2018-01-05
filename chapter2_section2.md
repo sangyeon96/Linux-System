@@ -32,12 +32,14 @@
 
 test.sh라는 파일을 만들어 예제 2-1을 실행해보았다.
 
-    count=0
-    while :
-    do
-        echo $count
-        count=`expr $count + 1`
-    done
+```bash
+count=0
+while :
+do
+    echo $count
+    count=`expr $count + 1`
+done
+```
 
 첫번째 줄에서 주의해야 할 점은 변수를 대입할 때 공백이 없어야한다는 점이다. 대입 시 공백을 넣으면 공백을 데이터로 처리해 오류가 난다.
 
@@ -55,7 +57,7 @@ test.sh라는 파일을 만들어 예제 2-1을 실행해보았다.
 
 test.sh라는 파일에 다음을 입력한 후 `source`와 `.`을 실행해보았다.
 
-```
+```bash
 year=2018
 echo $year
 ```

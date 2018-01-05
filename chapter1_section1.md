@@ -20,7 +20,7 @@
 
 ![](/assets/Linux Architecture Diagram.jpg)
 
-```
+```bash
 ls (list)
 ls -a (list all)
 ls -l (list with long format - show permissions)
@@ -96,7 +96,7 @@ whatis 와 apropos를 비교하자면, apropos가 좀 더 넓은 범위로 찾�
 
 `ps` \(process status\) : 터미널에서 실행되고 있는 프로세스 상태 표시
 
-```
+```bash
 ps a (show processes for all users)
 ps u (display the process's user/owner)
 ps x (show processes not attached to a terminal)
