@@ -36,3 +36,17 @@ Section 8. CentOS의 커널 구축 방법
 
 Section 9. UNIX 디바이스
 
+## Chapter 4. X Window System
+
+Section 1. X Window System의 구성
+
+Section 2. X 액세스 제어
+
+Section 3. X 설정
+
+Section 4. X 구동
+
+Section 5. X 디스플레이 매니저
+
+Section 6. X 서버 로그
+
