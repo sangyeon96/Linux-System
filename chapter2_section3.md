@@ -228,13 +228,9 @@ NUM=1; while test "$NUM" -le "10"; do echo "Num in $Num"; Num=$[Num+1]; done
 2) for (( 식1; 식2; 식3 )) do 리스트; done
 ```
 
-다음은 1\)을 이용한 예제이다.
+다음은 1\)을 이용한 예제이다. 이건 사진을 이용해야해서 GUI환경인 우분투에서 실행해보았다.
 
-![](/assets/for%281%29.png)
-
-CENTOS 7에서는 convert 명령어가 없어서 실행이 되지 않는다. ubuntu에서도 -rotate가 없는 옵션이라고 한다. 그런데 책에서는 그냥 for문에 대한 설명만 있고 do 뒤의 커맨드를 실행한다. 라고 써있어서 뭔지 모르겠다..패스.
-
-다음은 2\)을 이용한 예제이다.
+우분투에서 `man convert`로 확인해보니 회전 옵션명이 -rotate degrees이었다. Downloads 폴더에 이미지 2개 준비해놓고 예제를 실행해보니 for문으로 이미지를 하나씩 불러와 180도 회전하고 이미지명에 '180rotated-'를 붙힌 이미지를 얻을 수 있었다.![](/assets/for%281%29.png)다음은 2\)을 이용한 예제이다.
 
 ![](/assets/for%282%29.png)
 
@@ -244,11 +240,30 @@ CENTOS 7에서는 convert 명령어가 없어서 실행이 되지 않는다. ubu
 
 break는 for, while, select의 루프에서 빠져나올 때 쓰는 구문이다. break는 인수로 숫자를 쓸 수 있으며 빠져나올 루프의 수를 지정한다.
 
-예제 2-8은 왜 계속 4번째줄 fi에서 syntax error가 날까..
-
-예제 2-9도..
-
 continue는 for, while, select에서 현재 루프를 건너뛰고 다음 지점부터 계속 루프를 돌리는 것이다. 비슷한 커맨드로는 return이나 exit이 있다. 다만, return은 셸 함수에서 빠져나오는 것이고, exit은 셸을 종료하는 것이다.
+
+```bash
+for i in 1 2 3; do
+    echo "[i=$i] Start"
+    if test $i -eq 2; then
+        echo "No j when i is 2"
+        continue
+    fi
+    for j in 1 2 3 4; do
+        if test $j -eq 3; then
+            echo "[j=$j] It is 3. Break."
+            break
+        else
+            echo "[j=$j] It is $j."
+        fi
+    done
+    echo "[i=$i] End"
+done
+```
+
+![](/assets/break, continue.png)
+
+ 실행 결과를 통해 `for j in 1 2 3 4`임에도 불구하고 j의 값이 3일 때 break를 해서 j의 for문에서 빠져나와\(done으로 어디서 끝나는지 알 수 있다\) 그 다음 실행문을 실행하는 걸 볼 수 있다. 또한 i의 값이 2일 때, continue 밑의 실행문들을 실행하지 않고 i=3일 때의 for문으로 넘어갔음을 알 수 있다.
 
 ##### 와일드카드를 이용한 반복
 
