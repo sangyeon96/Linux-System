@@ -26,7 +26,7 @@
 
 ### 2.2 주요 내장 커맨드
 
-##### 쌍점\(:\)
+#### 쌍점\(:\)
 
 아무것도 하지 않고 종료 코드 '0'을 반환한다.
 
@@ -51,7 +51,7 @@ done
 
 여기서 살짝 의문인 점은 C언어에서 보면 while\(1\)에서 1이 true를 반환하여 무한반복하는데, 여기서는 0이 true를 반환하여 무한 루프를 돈다는 것이다. 이건 차차 알아가기로 하고..\(이 해답은 해당 Chapter의 Section 3에서 알 수 있다.\)
 
-##### source 또는 온점\(.\)
+#### source 또는 온점\(.\)
 
 현행 셸 환경에서 다른 셸 스크립트를 불러와 실행한다.
 
@@ -66,7 +66,7 @@ echo $year
 
 ![](/assets/source.png)
 
-##### cd
+#### cd
 
 change directory. 지정된 디렉터리로 이동한다.
 
@@ -80,7 +80,7 @@ CENTOS 7에서는 dpkg directory가 존재하지 않아 ubuntu에서 실행해�
 
 ![](/assets/cd.png)
 
-##### eval
+#### eval
 
 evaluation. 파라미터를 간접 참조한다.
 
@@ -90,7 +90,7 @@ evaluation. 파라미터를 간접 참조한다.
 
 참고 URL : [https://wiki.kldp.org/HOWTO/html/Adv-Bash-Scr-HOWTO/ivr.htm](https://wiki.kldp.org/HOWTO/html/Adv-Bash-Scr-HOWTO/ivr.html)
 
-##### exec
+#### exec
 
 execution.
 
@@ -108,7 +108,7 @@ With `exec ls`, you actually replace your shell program in the current process w
 
 Most likely, you will have either a terminal program or `init` as the parent which is what will take over when your process exits. That's why your shell disappears, because you explicitly told it to.
 
-##### read
+#### read
 
 표준 입력에서 1행 읽어들인다.
 
@@ -120,7 +120,7 @@ Most likely, you will have either a terminal program or `init` as the parent whi
 
 `while read line`은 그 자체로 많이 쓰이는 듯하다. 여기서 n은 0으로 초기화 되지도 않았는데 어떻게 1부터 시작하는지는 모르겠다0\_0
 
-##### 그 외의 내장 커맨드
+#### 그 외의 내장 커맨드
 
 `exit`, `export`, `return`, `unset`, `pwd`, `logout`, `kill`
 
