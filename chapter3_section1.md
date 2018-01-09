@@ -44,7 +44,9 @@ GNU C Library is a wrapper around the system calls of the Linux kernel.
 
 ### 1.2 시스템 부팅 절차
 
-부팅 과정은 BIOS -&gt; MBR 읽기 -&gt; 부트 로더 실행 -&gt; 커널 구동 순이다. 
+부팅 과정은 BIOS -&gt; MBR 읽기 -&gt; 부트 로더 실행 -&gt; 커널 구동 순이다.
+
+\(참고 : [http://duartes.org/gustavo/blog/post/how-computers-boot-up/](http://duartes.org/gustavo/blog/post/how-computers-boot-up/)\)
 
 #### BIOS
 
@@ -60,7 +62,7 @@ PC의 전원을 켜면 BIOS\(Basic Input Output System\)가 머더보드 상의 
 
 BIOS에서 POST가 실행된 뒤 부트 디바이스\(HDD나 CD-ROM\)의 첫 섹터인 MBR\(Master Boot Record\)에 부팅 프로그램이 있는지 검색한다.
 
-MBR은 부팅 장치의 첫 512byte의 영역에 해당한다. 첫 0byte~455byte까지가 부트 로더, 그 이후 509byte까지가 파티션 테이블, 511byte까지는 부트 시그니처가 들어간다.
+MBR은 부팅 장치의 첫 512byte의 영역에 해당한다. 첫 0byte~455byte까지가 부트 로더, 그 이후 509byte까지가 파티션 테이블, 511byte까지는 부트 시그니처가 들어간다.\(이 설명이 맞나 모르겠다. 구글링에 의하면 446byte\(0~445\)까지가 부트 로더, 그 이후 64byte\(446~510\)가 파티션 테이블, 남은 2byte\(511,522\)가 부트 시그니처이다\)
 
 ![](/assets/structure of MBR.jpg)
 
