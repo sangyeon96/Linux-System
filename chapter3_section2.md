@@ -6,6 +6,8 @@ GRUB\(GRand Unified Bootloader\)는 GNU Project의 하나로 개발된 부트 �
 
 GRUB는 두 개의 버전이 유통되고 있다. version 1.0계열의 GRUB 1\(GRUB Legacy\)과 GRUB version 2.0계열의 GRUB 2이다.
 
+CENTOS 7은 GRUB 2인거 같다.
+
 GRUB 2에서는 다음과 같이 변경되었다.
 
 * 설정 파일 menu.lst -&gt; grub.cfg
@@ -18,5 +20,27 @@ GRUB는 MBR의 512byte에 **Stage 1 로더**를 먼저 구동한다. Stage 1부�
 
 ### 2.2 GRUB Shell
 
+부팅 시 부팅 목록이 표시될 때 `C`를 누르면 셸 모드로 진입한다.
 
+![](/assets/GRUB Shell.png)
+
+주요 커맨드는 set root, kernel/linux, initrd, boot 다음 4개이다.
+
+#### set root
+
+![](/assets/set root.png)
+
+GRUB 2는 파티션을 1부터 카운트한다던데 밑에 possible partitions를 통해 알 수 있다.
+
+#### kernel\(GRUB 1\)/linux\(GRUB 2\)
+
+구동할 커널을 지정한다. GRUB 1에서는 kernel, GRUB 2에서는 linux라는 커맨드를 사용한다.
+
+#### initrd\(init ram disk\)
+
+초기 RAM 디스크 이미지를 지정한다. 초기 RAM 이미지는 메모리상에 일시적으로 적재되는 루트 파일 시스템을 지칭한다. 이 이미지를 사용해 실제 루트 파일 시스템을 마운트한다.\(Chapter 1의 Section 2에서 2.3 /boot 참고\)
+
+#### boot
+
+지금까지 입력한 커널 패스와 옵션 정보를 바탕으로 실제 커널을 부팅하는 커맨드이다.
 
