@@ -44,8 +44,8 @@
 빌드는 다음과 같은 순서로 진행된다.
 
 1. make O=/home/user/build/kernel : 커널, 모듈을 빌드하여 압축된 커널 이미지를 생성
-2. make O=/home/user/build/kernel\_modules_\__install : 모듈을 시스템 디렉터리에 설치
-3. make O=/home/user/build/kernel\_firmware_\__install : 일부 드라이버에서 이용하는 펌웨어를 시스템 디렉터리에 설치
+2. make O=/home/user/build/kernel\_modules\_install : 모듈을 시스템 디렉터리에 설치
+3. make O=/home/user/build/kernel\_firmware\_install : 일부 드라이버에서 이용하는 펌웨어를 시스템 디렉터리에 설치
 4. make O=/home/user/build/kernel install : install kernel 커맨드를 사용해 새로운 커널을 시스템에 설치
 
 
