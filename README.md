@@ -50,3 +50,17 @@ Section 5. X 디스플레이 매니저
 
 Section 6. X 서버 로그
 
+## Chapter 5. 스크립트와 시스템 설정 파일
+
+Section 1. 부팅 스크립트와 설정 파일
+
+Section 2. 사용자와 그룹 정의 파일
+
+Section 3. 네트워크 설정 스크립트
+
+Section 4. 패킷 필터링
+
+Section 5. udev
+
+Section 6. httpd 부팅 스크립트
+
