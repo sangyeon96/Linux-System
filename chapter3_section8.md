@@ -1,5 +1,7 @@
 # Section 8. CentOS의 커널 구축 방법
 
+[http://aeac.tistory.com/12](http://aeac.tistory.com/12)
+
 ### 8.1 소스 패키지 얻기
 
 `yum install kernel-devel`
