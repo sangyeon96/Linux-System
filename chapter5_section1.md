@@ -24,7 +24,92 @@ sysvinit은 런레벨 별로 init 스크립트를 나누어 프로세스 구동�
 
 upstart는 sysvinit과의 호환성을 유지하기 위해 런레벨이라는 개념을 그대로 가져오고있다. 단, upstart는 기본적으로 'event'와 'job' 개념을 바탕으로 동작한다. 구동시 /etc/init/아래의 .conf 확장자를 가진 파일을 'job'으로 사용하게 된다.
 
+#### job의 기술 방법
+
+job 파일은 /etc/init/ 아래에 'job 이름.conf'로 생성한다. 또한, job 파일 내에서 지정하는 각 항목은 **스탠자\(stanza\)**라고 부른다. start on, stop on 스탠자는 이벤트를 받는 쪽이지만, job은 emit 스탠자를 사용하여 이벤트를 발생시킬 수도 있다. job 파일끼리 서로 이벤트를 주고받음으로써 실행, 중지 처리를 수행한다.
+
+upstart는 task와 service라는 두 가지 job 타입으로 나뉜다. task는 짧은 프로세스로 처리가 종료되면 job도 종료된다. service는 Apache와 같은 데몬 job으로, 'task'가 명시적으로 쓰여 있지 않은 job은 'service'로 취급된다.
+
+또한, job 파일은 bash 베이스의 스크립트를 처리할 수 있다. 프로세스 실행, 종료 처리 관련 스탠자의 종류는 다음과 같다.
+
+* pre-start
+* post-start
+* pre-stop
+* post-stop
+
+그 외 자주 사용하는 스탠자는 다음과 같다.
+
+* env
+* exec
+* respawn
+* umask
+* kill timeout
+* expect
+* normal exit
+* console
+
+#### initctl 사용
+
+upstart는 job 관리에 initctl을 사용한다. 이 커맨드로 이용할 수 있는 주요 기능은 다음과 같다.
+
+* start
+* stop
+* restart
+* reload
+* status
+* list
+* emit
+* reload-configuration
+* log-priority
+* show-config
+* check-config
+
+#### upstart의 동작\(CentOS\)
+
+upstart의 init은 커널에 의해 실행된 후 startup 이벤트를 발생시킨다. 각 job 파일 중 start on startup 이라는 기술이 들어가 있는 job이 이때 실행된다. CentOS에서는 가장 첫 이벤트로 etc/init/rcS.conf job을 실행한다.
+
+재실행\(respawn\)하는 job은 해당 프로세스를 kill하여 정상적으로 프로세스가 다시 부활하는지 확인해볼 수 있다.
+
+#### 사용자가 직접 job 파일을 작성
+
+여기에서는 swap을 마운트하는 간단한 job을 예로 들어보겠다.
+
+```
+# mount-swap - Mount swap
+#
+description "Mount swap"
+
+start on all-swap
+stop on starting rcS
+
+task
+
+# temporary, until we have progress indication
+# and output capture (next week :p)
+console output
+
+script
+    swapon /dev/sda5
+end script
+```
+
+다음으로 `sudo initctl emit all-swap`을 실행하면 swap이 마운트될 것이다. job이 문제없이 반응하면 swap 영역이 마운트 되고 로그에 기록이 남는다.
+
 ### 1.3 systemd
+
+systemd는 sysvinit을 대체하기 위한 init 데몬이다. 특징으로는 처리 병렬화, UNIX 소켓과 D-Bus\(애플리케이션의 프로세스 간 통신\)를 이용한 서비스 실행, Linux 프로세스 컨트롤 그룹\(cgroups\) 기능을 이용한 프로세스 추적, 시스템 상태 스냅샷 생성/복원 등을 들 수 있다.
+
+systemd에서는 **유닛**과 **타깃**이 기본 개념이다. 지금까지의 runlevel은 '타깃'으로 바꾸어 생각하면 된다. **타깃은 유닛의 집합**이다. 유닛은 systemd가 다루는 조작 대상을 가리킨다.
+
+#### systemd의 구성
+
+#### systemd의 유닛
+
+#### systemd 이용 커맨드
+
+#### systemd의 설정 파일
+
+#### 서비스의 등록/실행/중지/재실행
 
 ### 1.4 파티션과 마운트 포인트 설정\(/etc/fstab\)
 
