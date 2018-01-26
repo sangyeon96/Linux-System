@@ -103,15 +103,89 @@ systemd에서는 **유닛**과 **타깃**이 기본 개념이다. 지금까지�
 
 #### systemd의 구성
 
+![](/assets/systemd.jpg)
+
+sysvinit에서는 init이 구동되고 /etc/inittab으로부터 런레벨을 읽어와 해당 런레벨의 디렉터리\(/etc/rc5.d\) 아래의 데몬 구동 스크립트를 실행한다. 이 안에는 syslog도 포함되어 있어서 시스템의 로그 등이 syslogd 경유로 로그에 기록되거나 httpd와 같이 독자적으로 로그를 기록한다. 데몬의 구동, 중지에는 service 등을 사용한다.
+
+systemd는 **journald**라는 독자적인 로깅 시스템을 가지고 있으며 systemd와 동시에 구동된다. journald만으로도 로그는 수집되지만, syslogd가 존재하는 환경과의 호환성을 고려하여 rsyslogd와 소켓을 경유하여 기존의 시스템 로그가 기록되어 있다. sshd 등은 journald에 기록하며, journald가 소켓을 경유하여 rsyslog에서 로그를 남긴다. httpd 등은 sysvinit과 마찬가지로 독자적으로 로그를 기록한다.
+
 #### systemd의 유닛
+
+* systemd.service
+* systemd.socket
+* systemd.device
+* systemd.mount
+* systemd.automount
+* systemd.swap
+* systemd.target
+* systemd.path
+* systemd.timer
+* systemd.snapshot
 
 #### systemd 이용 커맨드
 
+* /usr/bin/hostnamectl
+* /usr/bin/journalctl
+* /usr/bin/localctl
+* /usr/bin/loginctl
+* /usr/bin/systemctl
+* /usr/bin/systemd
+* /usr/bin/timedatectl
+* /usr/bin/udevadm
+* /usr/sbin/halt
+* /usr/sbin/init
+* /usr/sbin/poweroff
+* /usr/sbin/reboot
+* /usr/sbin/runlevel
+* /usr/sbin/shutdown
+* /usr/sbin/telinit
+* /usr/sbin/udevadm
+
+여기서 ctl은 control이라고 보면 된다.
+
 #### systemd의 설정 파일
+
+systemd는 /etc/inittab을 읽어들이지 않고 /etc/systemd/system/default.target을 먼저 읽어 온다.
+
+##### multi-user.target
+
+![](/assets/multi-user.target.png)
+
+##### graphical.target
+
+![](/assets/graphical.target.png)
 
 #### 서비스의 등록/실행/중지/재실행
 
+##### 서비스 실행
+
+```
+sudo systemctl start httpd
+```
+
+##### 서비스 상세 정보 확인
+
+```
+systemctl status httpd
+```
+
+##### 서비스 중지
+
+```
+sudo systemctl stop httpd
+```
+
+##### 서비스 자동 시작
+
+```
+sudo systemctl enable httpd
+```
+
+systemd는 리눅스의 고유 기능을 이용하고 있으며 타 시스템에 대한 이식성이 낮은 init시스템이지만, 리눅스의 거인이라고 할 수 있는 Red Hat사의 Fedora에서 채택하고 있는 만큼 향후 존재감은 더 커질 가능성이 높다고 한다.
+
 ### 1.4 파티션과 마운트 포인트 설정\(/etc/fstab\)
+
+
 
 ### 1.5 커맨드라인 입력 지원 라이브러리\(/etc/inputrc\)
 
