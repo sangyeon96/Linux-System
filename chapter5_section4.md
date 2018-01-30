@@ -1,4 +1,4 @@
-# Section 4. 패킷 필터링
+* [ ] # Section 4. 패킷 필터링
 
 리눅스 커널에는 IP 패킷 필터링 프레임워크 'Netfilter'와 이를 이용하기 위한 커맨드라인 프론트엔트 `iptables`/`ip6tables`가 준비되어 있다.
 
@@ -77,6 +77,50 @@ iptables -A <체인> <매칭 옵션> -j <타깃>
 * DROP : 패킷 버림
 * QUEUE : 사용자 공간으로 패킷을 들여보냄
 * RETURN : 체인 종료
+
+#### 체인=규칙+규칙+....
+
+체인이라는 것은 규칙의 집합이다. 규칙을 정의하는 순번도 중요하다. **패킷은 규칙 순서대로 매칭**되기 때문에 때로는 중요한 패킷을 누락시켜버리는 경우도 발생한다. 다음은 체인 구축 예이다.
+
+![](/assets/iptables chain example.png)
+
+INPUT이라는 체인에서 22/TCP, 80/TCP, 53/UDP를 받아들이고 나머지는 DROP하는 규칙의 집합이다. 먼저 정책을 DROP 등으로 지정하고 그 뒤에 통과시킬 패킷을 지정하는 것이 표준 체인의 사용법이다. 여러 개의 규칙으로 INPUT이라는 체인을 구축하게 되며 체인은 사용자가 자유롭게 정의할 수도 있다.
+
+#### 테이블=체인+체인
+
+특별히 -t로 테이블을 지정하지 않는 경우 filter 테이블이 생성된다. 테이블은 다음과 같다.
+
+| 테이블 | 목적 | 이용 가능한 표준 체인 |
+| :--- | :--- | :--- |
+| filter | 목적 패킷을 필터링 | INPUT, OUTPUT, FORWARD |
+| nat | 출발지 또는 도착지 주소를 변환 | OUTPUT, PREROUTING, POSTROUTING |
+| mangle | TTL 등 패킷 헤더를 수정 | INPUT, OUTPUT, PREROUTING, POSTROUTING |
+| raw | 연결 추적을 하지 않는 변환 실시 | OUTPUT, PREROUTING |
+
+패킷 헤더 수정 등이 필요하지 않으면 filter와 nat 테이블만으로도 충분하다. filter 테이블은 INPUT과 OUTPUT과 FORWARD 체인을 이용하여 ACCEPT/ DROP 등의 필터링을 실시한다. nat 테이블은 NAT\(Network Address Translation\)을 실시하여 출발지나 도착지 주소를 변환한다. mangle 테이블은 TTL\(Time To Live, 라우터를 거칠 때마다 감소하는 패킷 생존수치\) 값을 조정하여 LAN에서 얼마 만큼의 라우터를 거쳤는가 등의 정보들을 외부 네트워크로 새어나가지 않도록 막거나 TOS 타깃을 이용해 라우팅할 곳을 조정한다.
+
+체인 용도 설명은 다음과 같다.
+
+* INPUT : 패킷 입력 규칙을 정의한다.
+* OUTPUT : 패킷 출력 규칙을 정의한다.
+* FORWARD : 패킷을 전송하는 규칙을 정의한다.
+* PREROUTING : 입력 전에 패킷을 변환한다.
+* POSTROUTING : 입력 후에 패킷을 변환한다.
+
+체인은 사용자가 독자적으로 만들 수 있다. `-N`으로 사용자 정의 체인을 만들고 이를 `-A`로 지정, 패킷 매칭과 타깃을 지정한다. 표준 타깃을 지정하는 `-P`는 기본 내장 체인\(INPUT, OUTPUT, FORWARD, PROROUTING, POSTROUTING\)만 이용할 수 있다. 사용자가 독자적으로 체인을 만들 때에는 가장 마지막에 DROP이나 REJECT를 지정해야 한다.
+
+체인 작성 예는 다음과 같다.
+
+```
+iptables -N tcp-allow   # tcp-allow 체인 생성
+
+iptables -A tcp-allow -p TCP --syn -j ACCEPT
+iptables -A tcp-allow -p TCP -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables -A tcp-allow -j DROP   # tcp-allow 체인 종료
+
+iptables -A INPUT -p ICMP -j ACCEPT
+iptables -A INPUT -p TCP -j tcp-allow   # tcp-allow 체인 호출
+```
 
 ### 4.4 logging
 
