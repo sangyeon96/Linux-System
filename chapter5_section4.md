@@ -156,11 +156,22 @@ EXDEV=eth0
 
 1) 에러일 때 echo
 $IPT -A INPUT -i $EXDEV -p TCP --sport 22 -j ACCEPT || echo "ssh/tcp input rule failed."
+$IPT -A INPUT -i $EXDEV -p TCP --sport 80 j ACCEPT || echo "http/tcp input rule failed."
+$IPT -A INPUT -i $EXDEV -p UDP --sport 53 -j ACCEPT || echo "domain/udp input rule failed."
 2) INPUT 체인째로 echo
 echo "INPUT"
+$IPT -A INPUT -i $EXDEV -p TCP --sport 22 -j ACCEPT
+$IPT -A INPUT -i $EXDEV -p TCP --sport 80 j ACCEPT
+$IPT -A INPUT -i $EXDEV -p UDP --sport 53 -j ACCEPT
 ```
+
+1\)의 경우 두번째 줄의 `j`가 틀렸으므로 `http/tcp input rule failed`가 출력된다.
+
+2\)의 경우 INPUT체인에서 틀린 게 있다고 알려준다.
 
 ### 4.7 iptables 규칙 부팅 스크립트
 
+CentOS에서는 /etc/init.d/iptables에 iptables 규칙을 유효화하는 스크립트가 준비되어 있다. 이 스크립트는 iptables-restore에 규칙의 덤프 파일을 입력하면 유효화된다.
 
+사용자가 규칙을 만든 뒤에는 이를 적용하여 iptables-save로 덤프한다. 설치 시에 생성된 규칙을 백업한 후에 실행하도록 한다.
 
