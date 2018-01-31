@@ -124,9 +124,41 @@ iptables -A INPUT -p TCP -j tcp-allow   # tcp-allow 체인 호출
 
 ### 4.4 logging
 
+타깃에 LOG나 ULOG를 지정하면 syslog나 ulog에 패킷 로그를 기록할 수 있다. **패킷 로그는 기본으로 커널 로그에 기록된다**. 로그 facility를 변경할 때에는 `--log-level`을 이용한다. 또한 로그 기록 시에는 prefix를 지정할 수도 있다. `--log-prefix`로 문자열을 지정해 두면 기록된 패킷이 어느 규칙에 매치되었는지 판단할 수 있다. 타깃에 LOG/ULOG를 지정하면 해당 규칙을 통과한 후 다음 규칙의 검토에 들어간다. 그리고 LOG/ULOG 타깃 뒤에는 타깃의 DROP이나 REJECT 규칙을 다시 한 번 추가해두도록 한다.
+
+```
+iptables -N LOGGING # LOGGING 체인 생성
+
+iptables -A INPUT -j LOGGING
+iptables -A INPUT -p ICMP -d 192.168.2.121 -j ACCEPT
+iptables -A LOGGING -j LOG # 상기 규칙 이외의 패킷을 로그 기록
+iptables -A LOGGING -j DROP # LOGGING 체인 종료
+```
+
 ### 4.5 패킷 필터 스크립트 작성
 
+iptables로 패킷 필터링을 구축할 때 규칙 정의에는 iptables을 실행하게 되지만, **원격으로 수동 입력하는 경우**에 첫 기본 정책에서 타깃에 DROP을 지정하면 그 후에는 원격 접근을 할 수 없게 된다. 원격 환경에서는 가능한 한 iptables를 건드는 것은 피하는 것이 좋지만, 불가피할 때는 **스크립트를 사용해서 규칙을 기술**한다. 기본 정책 실행 후에 원격 접근 가능한 규칙까지 한꺼번에 추가하면 이와 같은 문제를 피할 수 있다.
+
+그리고 iptables의 옵션에서는 네트워크 인터페이스\(예를 들면 eth0\)와 IP주소를 지정한다. 셸 스크립트에서 **주소를 지정하는 변수**를 만들어 두면 다른 호스트에도 이를 쉽게 활용할 수 있다.\(범용성을 높일 수 있다.\)
+
+철자법 실수 등으로 변수가 무효화되어 있지는 않은지 셸에 `-x`를 붙여 변수를 풀어보면 실제 값을 확인할 수 있다.
+
 ### 4.6 디버그 방법
+
+iptables 규칙을 스크립트로 만들어 디버그할 때에는 셸의 `echo`를 이용한다. 예시는 다음과 같이 두 가지 방법이 있다.
+
+1. 스크립트의 각 행에 `echo 'rule 1'`등 표시할 문자열을 알기 쉽게 바꾸어 기술.
+2. 체인째로 `echo`
+
+```
+IPT=/sbin/iptables
+EXDEV=eth0
+
+1) 에러일 때 echo
+$IPT -A INPUT -i $EXDEV -p TCP --sport 22 -j ACCEPT || echo "ssh/tcp input rule failed."
+2) INPUT 체인째로 echo
+echo "INPUT"
+```
 
 ### 4.7 iptables 규칙 부팅 스크립트
 
