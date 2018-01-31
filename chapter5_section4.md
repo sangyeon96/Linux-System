@@ -1,4 +1,4 @@
-* [ ] # Section 4. 패킷 필터링
+# Section 4. 패킷 필터링
 
 리눅스 커널에는 IP 패킷 필터링 프레임워크 'Netfilter'와 이를 이용하기 위한 커맨드라인 프론트엔트 `iptables`/`ip6tables`가 준비되어 있다.
 
