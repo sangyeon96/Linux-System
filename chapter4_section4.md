@@ -14,7 +14,7 @@ X 구동에는 일반적으로 xinit, startx, XDM\(X Display Manager\)을 이용
 
 `xinit`은 수동으로 X를 구동하는 명령어이며 `startx`는 `xinit` 실행 후에 환경 변수를 설정하고 프로그램을 실행하는 셸 스크립트이다.
 
-`startx`의 실행\(CentOS\)
+#### `startx`의 실행\(CentOS\)
 
 1. startx를 실행한다.
 2. ~/.xinitrc와 ~/.xserverrc를 탐색한다.
