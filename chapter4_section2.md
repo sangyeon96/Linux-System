@@ -34,7 +34,7 @@ xhost +si:localuser:rino
 
 `xhost`는 네트워크상의 호스트 이름 등을 이용해 액세스를 제어하지만, 더욱 엄격히 액세스를 제어하고 싶을 때에는 `xauth`를 사용한다. `xauth`에서는 매직 쿠키라고 하는 인증용 문자열을 사용한다. 이것은 X 서버의 쿠키를 X 애플리케이션을 실행하는 단말기에 설정함으로써 액세스를 제어하는 키\(key\)역할을 하게 된다. `xauth list`로 X 서버의 매직 쿠키를 표시할 수 있다.
 
-X서버의 쿠키는 클라이언트 실행 단말기로 전송한다. `xauth extract`를 사용해 xauth 지시 파일을 만들고 파이프를 사용해 `ssh`로 대상 호스트, `xauth merge`의 실행을 지시하면 대상 호스트에 등록할 수 있다. 참고로 ssh는 secure shell을 의미한다. 다음은 xauth 매직 쿠키 전송 예시이다.
+X서버의 쿠키는 클라이언트 실행 단말기로 전송한다. `xauth extract`를 사용해 xauth 지시 파일을 만들고 파이프 `|`를 사용해 `ssh`로 대상 호스트, `xauth merge`의 실행을 지시하면 대상 호스트에 등록할 수 있다. 참고로 ssh는 secure shell을 의미한다. 다음은 xauth 매직 쿠키 전송 예시이다.
 
 ```
 $ xauth extract - $DISPLAY | ssh -l 사용자명 실행단말기 xauth merge -
