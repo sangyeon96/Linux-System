@@ -37,7 +37,15 @@ EndSection
 * DRI : Direct Rendering Infrastructure의 변수 지정.
 * Vendor : 디바이스를 제공하는 벤더 정보를 기술.
 
+책에 나와있는 xorg.conf 예제를 보면 기본 포맷 형태의 섹션이 총 8개 존재한다.
+
+Module, InputDevice, InputDevice, Device, Monitor, Screen, ServerLayout, DRI
+
+여기서 InputDevice섹션이 2개인 이유는 하나는 키보드, 하나는 마우스 관련 설정이기 때문이다.
+
+ServerLayout섹션을 보면 Screen섹션과 InputDevice섹션과 관련이 있음을 알 수 있다. 반면 Module섹션과 DRI섹션은 독립되어 있다.
+
 ### 3.3 xorg.conf.d
 
-
+기본적인 키보드와 마우스 이외의 입출력 장치는 /usr/share/X11/xorg.conf.d 또는 /etc/X11/xorg.conf.d 아래에서 설정한다. InputClass섹션을 사용하여 제품명이나 경로로 검색된 장치의 세밀한 설정을 할 수 있다. 예시는 책 참고.
 
