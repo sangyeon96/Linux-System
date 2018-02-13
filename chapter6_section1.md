@@ -52,9 +52,40 @@ SSH 데몬이 참조하는 것은 `sshd_config`이다.
 sshd\_config의 내용은 책 참고하기. 포트번호, 대기하는 IP주소, 이용할 SSH 프로토콜 버전, SSH 호스트 비밀키, 여러 권한들에 대해 yes인지 no인지 등을 확인할 수 있다. 해당 내용에서 참고로 알아둘만한 용어는 다음과 같다.
 
 * Kerberos의 KDC \(Key Distribution Center\)
-* GSSAPI \(Generic Security Service Application Programming Interface\) 인증
+* GSSAPI \(Generic Security Service Application Programming Interface\) Authentication\(인증\)
+* AllowTcpForwarding : '**SSH 포트 포워드**'라고도 불리는 TCP 전송의 허가 여부를 지정한다. SSH의 TCP 전송은 안전하지 않은 TCP/IP 프로토콜을 캡슐화함으로써 암호화된 TCP/IP 프로토콜로 안전하게 경로를 이용할 수 있게 해준다. 안전하지 않은 TCP/IP 프로토콜을 SSH로 암호화해서 이용하려면 프로그램이 암호화에 사용할 주소와 포트가 필요하다. 그 포트를 통해 SSH 서버의 22/TCP에 접속하여 수신할 수 있다.
 
 ### 1.4 SSH 클라이언트 설정
 
+SSH 클라이언트는 관리자뿐만 아니라 개발자도 개발 서버나 설치 서버 로그인 등에 많이 사용하는 도구 중 하나이다. SSH를 사용할 때 긴 커맨드나 호스트 이름을 입력하거나 SSH 공개키 인증 패스 문구를 입력하는 일은 꽤 번거로운 일이기도 하다. 여기에서는 OpenSSH의 클라이언트를 조금이라도 편리하게 쓸 수 있는 설정 파일을 만들 수 있다.
 
+SSH 클라이언트의 옵션은 다음 순서로 읽어들인다.
+
+1. ssh 커맨드 라인 옵션
+2. 사용자별 옵션\(~/.ssh/config\)
+3. 시스템 옵션\(/etc/ssh/ssh\_config\)
+4. ssh 커맨드 기본 파라미터
+
+커맨드 라인 옵션에 입력하는 호스트 이름이나 사용자명, SSH 비밀키 PATH, 포트 번호 등 자주 쓰는 로그인일수록 매번 입력하기 귀찮기 마련이다. 이것을 사용자용 파일 ~/.ssh/config에 정리해두면 좀 더 편리하게 로그인할 수 있다. 다음은 ~/.ssh/config의 예시이다.
+
+```
+Host example
+    User manager  #사용자명
+    Hostname www.example.com  #호스트 이름
+    AddressFaimily inet6  #IPv6로 접속
+    Port 2222  #포트번호
+    IdentityFile ~/.ssh/id_rsa-example  #SSH 비밀키
+```
+
+SSH 커맨드를 실행하는 예이다.
+
+```
+$ ssh -l manager www.example.com -6 -p 2222 -i ~/.ssh/id_rsa-example
+```
+
+이로써 `ssh example`이라고 입력하기만 하면 위의 커맨드 실행처럼 실행되어 타깃 호스트에 SSH로 로그인할 수 있게 된다.
+
+위의 파일 예시를 Host \*\(와일드카드\)로 바꾸면 기본 값으로 사용할 수 있다.
+
+또한 SSH 공개키로 패스 문구를 설정해 두면 로그인할 때마다 패스 문구를 입력해야 하지만, `ssh-agent`를 이용해서 맨 처음 한 번만 입력해 두면 그 이후에는 입력을 생략할 수 있다. SSH 공개키 인증 패스 문구를 등록하려면 `ssh-add`로 키를 캐시하면 된다. 등록 후에는 그 다음부터 패스 문구 입력을 요구하지 않는다.
 
