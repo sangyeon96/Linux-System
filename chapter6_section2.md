@@ -10,7 +10,11 @@ NFS 서버는 Debian의 경우 nfs-server 패키지, Red Hat 계열은 nfs-utils
 
 /var/nfs 디렉터리를 NFS로 서비스하는 스토리지 영역으로 설정하고 /etc/exports를 편집하여 클라이언트에서 마운트해보자.
 
+1. /etc/exports 파일을 만든 뒤 NFS 서버를 구동한다.
+2. 다음으로 클라이언트에서 공유 디렉터리를 마운트한다.
+3. 마운트되면 NFS 서버에 NFS 클라이언트가 표시된다.
 
+옵션에는 일반 옵션과 사용자 맵 옵션이 있다. 기본은 ro\(읽기 전용 파일 시스템\), wdelay\(NFS 서버에 대한 쓰기를 지연시킴으로써 퍼포먼스가 향상되는 것처럼 보임\), root\_squash\(root사용자로 접속했을 때 NFS 서버에서 해당 사용자를 일반 사용자로 취급함으로써 악성 파일이 갱신되는 것을 방지함\)가 설정되어 있다. 그 외 설정할 수 있는 주요 옵션은 p.321을 참고하기. /etc/exports를 변경한 뒤에는 NFS 데몬을 재시작하거나 exportfs로 다시 읽어들이면 적용된다.
 
 ### 2.2 Samba
 
@@ -26,9 +30,25 @@ SMB는 Microsoft의 독자 프로토콜이며 CIFS는 SMB를 오픈화한 프로
 
 #### smb.conf의 내용
 
+설정 파일에서는 섹션과 섹션에 속하는 파라미터 그리고 해당 파라미터의 값을 `=`로 대입하여 설정한다. 섹션에는 \[global\], \[homes\], \[printers\] 등이 있으며 다음 섹션의 정의까지가 그 섹션에 속하는 파라미터가 된다.
+
 #### smbclient를 통한 접속
 
+여기서는 smbclient와 mount.cifs를 사용하여 Samba를 이용하는 예를 소개한다.
+
+`smbclient`는 `//Samba 서버명/공유 디렉터리명`을 옵션으로 주어 Samba 서버에 접속한다.
+
+```
+$ smbclient //endeaver/mp3
+```
+
 #### 파일 매니저 노틸러스\(Nautilus\)
+
+파일 매니저 노틸러스를 사용하여 Samba 파일 공유에 접근할 수 있다.
+
+1. 메뉴의 파일-서버에접속 선택
+2. 서버에접속-종류-Windows 공유 선택
+3. 서버명, 공유할 위치, 도메인명 등을 설정한 후 연결
 
 ### 2.3 WebDAV
 
@@ -36,9 +56,23 @@ WebDAV\(Web-based Distributed Authoring and Versioning\)는 여러 명이 원격
 
 리눅스에서 이용하는 웹 서버 Apache에 mod\_dav 모듈이 표준 탑재되어 있으므로 이를 설정하면 파일을 공유할 수 있다.
 
+Debian GNU/Linux의 WebDAV는 다음 순서대로 유효화한다.
+
+1. /etc/apache2/mods-available/dav\_fs.conf를 편집
+2. a2enmod dav\_fs를 관리자 권한으로 실행
+3. service apache2 restart를 관리자 권한으로 실행
+
 #### httpd-dav.conf의 내용
 
+책 참고.
+
 #### WebDAV의 설정 예
+
+1. /home/dav를 WebDAV 디렉터리로 설정
+2. /dav/project와 /dav/manager 디렉터리를 만들어 각 사용자별로 접근을 제어
+3. /dav/user 아래는 LDAP 서버로 인증
+
+Digest 인증 파일
 
 #### WebDAV에 접근
 
