@@ -72,9 +72,13 @@ Debian GNU/Linux의 WebDAV는 다음 순서대로 유효화한다.
 2. /dav/project와 /dav/manager 디렉터리를 만들어 각 사용자별로 접근을 제어
 3. /dav/user 아래는 LDAP 서버로 인증
 
-Digest 인증 파일
+Digest 인증 파일은 `htdigest`로 생성한다. 또한 그룹 파일은 '그룹명:사용자명...'과 같은 형식으로 작성하면 복수 사용자를 그룹으로 취급하여 접근을 제어할 수 있다.
 
 #### WebDAV에 접근
 
+Nautilus에서 접근하려면 위에도 언급했다시피 \[파일\]메뉴에서 \[서버에 접속\]을 선택하고 WebDAV 서버의 호스트 이름이나 IP주소, 디렉터리명과 사용자명, 비밀번호를 입력한다. 인증을 통과하면 새 창에서 WebDAV 디렉터리의 리스트가 표시된다. 또한, 커맨드 라인으로 접근할 수 있게 해주는 `cadaver`이라는 도구도 있다.
 
+WebDAV에서는 디렉터리를 가리켜 'Collection'이라고 부른다. 그래서 해당 내용에 있는 Coll:은 디렉터리를 의미한다.
+
+기타 cadaver에서 이용할 수 있는 주요 커맨드는 책 참고하기. dir 대신 col이 들어간거\(ex. mkdir -&gt; mkcol, rmdir -&gt; rmcol\) 빼고는 리눅스 기본 커맨드랑 비슷하다.
 
