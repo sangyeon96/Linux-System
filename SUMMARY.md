@@ -38,4 +38,9 @@
 * [Section 2. 네트워크 파일 시스템](chapter6_section2.md)
 * [Section 3. Apache \(httpd 서버\)](chapter6_section3.md)
 * [Section 4. Postfix \(SMTP 서버\)](chapter6_section4.md)
+* [\[Chapter 7\] 시스템 관리](chapter-7-c2dc-c2a4-d15c-ad00-b9ac.md)
+* [Section 1. syslogd](section-1-syslogd.md)
+* [Section 2. cron](section-2-cron.md)
+* [Section 3. anacron](section-3-anacron.md)
+* [Section 4. at](section-4-at.md)
 
