@@ -34,5 +34,13 @@ Postfix의 설정 파일은 /etc/postfix에서 볼 수 있다. 책에서는 main
 
 #### telnet을 사용하여 SMTP 서버와 대화
 
+여기서는 메일 서버에 telnet을 사용하여 접속하고 SMTP 커맨드를 사용하여 메일 송신 테스트를 해볼 것이다.
 
+```
+$ telnet mail.example.kr 25
+```
+
+25/TCP 외를 이용하는 SMTP 서버는 포트 번호 지정을 변경해야 한다. 응답은 '220 mail.example.kr ESMTP'여야 한다.
+
+telnet을 빠져나올 때에는 Ctrl+`]`로 셸로 돌아온다.
 
