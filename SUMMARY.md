@@ -43,4 +43,9 @@
 * [Section 2. cron](chapter7_section2.md)
 * [Section 3. anacron](chapter7_section3.md)
 * [Section 4. at](chapter7_section4.md)
+* [\[Chapter 8\] 인증](chapter-8-c778-c99d.md)
+* [Section 1. 인증](section-1-c778-c99d.md)
+* [Section 2. PAM 인증](section-2-pam-c778-c99d.md)
+* [Section 3. LDAP 인증](section-3-ldap-c778-c99d.md)
+* [Section 4. SSH 공개키 인증](section-4-ssh-acf5-ac1c-d0a4-c778-c99d.md)
 
