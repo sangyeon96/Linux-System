@@ -15,6 +15,8 @@ OpenLDAP의 실행에 필요한 것은 크게 두 가지로 나눌 수 있다.
 
 **LDIF**\(LDAP data interchange format\)라는 디렉터리 정보를 추가, 갱신, 삭제하기 위한 텍스트 파일이 있다.
 
+![](/assets/LDAP DIT.png)출처 : [https://ensiwiki.ensimag.fr/index.php?title=About\_LDAP](https://ensiwiki.ensimag.fr/index.php?title=About_LDAP)
+
 LDAP DIT 구조를 보면, dc, ou, cn등이 있는데 그건 다음과 같다.
 
 dc \(Domain Component\)
@@ -22,6 +24,4 @@ dc \(Domain Component\)
 ou \(Organizational Unit\)
 
 cn \(Common Name\)
-
-
 
